@@ -7,11 +7,11 @@ import librosa.display
 from matplotlib.pyplot import specgram
 
 plt.style.use('ggplot')
-
+#Tamanho dos plots . Caso as imagens estiverem muito grandes ou pequenas, alterar aqui
 H_SIZE = 10
 V_SIZE = 22
 DDPI = 96
-
+#Parametros de fonte dos graficos
 plt.rcParams['font.size'] = 12
 plt.rcParams['axes.labelsize'] = 11
 plt.rcParams['axes.labelweight'] = 'bold'
@@ -20,14 +20,14 @@ plt.rcParams['xtick.labelsize'] = 10
 plt.rcParams['ytick.labelsize'] = 10
 plt.rcParams['legend.fontsize'] = 11
 plt.rcParams['figure.titlesize'] = 13
-
+#carrega os arquivos de som 
 def load_sound_files(file_paths):
     raw_sounds = []
     for fp in file_paths:
         X,sr = librosa.load(fp)
         raw_sounds.append(X)
     return raw_sounds
-
+#plota o grafico de waveform
 def plot_waves(sound_names,raw_sounds):
     i = 1
     fig = plt.figure(figsize=(H_SIZE,V_SIZE), dpi = DDPI)
@@ -38,7 +38,7 @@ def plot_waves(sound_names,raw_sounds):
         i += 1
     plt.suptitle('Figure 1: Waveplot',x=0.5, y=0.915,fontsize=12)
     plt.show()
-    
+#plota o grafico de espectograma    
 def plot_specgram(sound_names,raw_sounds):
     i = 1
     fig = plt.figure(figsize=(H_SIZE,V_SIZE), dpi = DDPI)
@@ -49,7 +49,7 @@ def plot_specgram(sound_names,raw_sounds):
         i += 1
     plt.suptitle('Figure 2: Spectrogram',x=0.5, y=0.915,fontsize=12)
     plt.show()
-
+#plota o grafico de power log espectograma
 def plot_log_power_specgram(sound_names,raw_sounds):
     i = 1
     fig = plt.figure(figsize=(H_SIZE,V_SIZE), dpi = DDPI)
@@ -61,12 +61,12 @@ def plot_log_power_specgram(sound_names,raw_sounds):
         i += 1
     plt.suptitle('Figure 3: Log power spectrogram',x=0.5, y=0.915,fontsize=12)
     plt.show()
-
-sound_file_paths = ["sapo1.wav", "sapo2.wav", "sapo3.wav", "sapo3.wav"]
-sound_names = ["Sapo-folha (Rhinella scitula) - Track 1", "Sapo-folha (Rhinella scitula) - Track 2", "Sapo-folha (Rhinella scitula) - Track 3", "Sapo-folha (Rhinella scitula) - Track 4"]
-
+#arquivos de som a serem criados os graficos
+sound_file_paths = ["sapo1.wav"]
+sound_names = ["Sapo-folha (Rhinella scitula) - Track 1"]
+#carrega os arquivos de som
 raw_sounds = load_sound_files(sound_file_paths)
-
+#plota os graficos
 plot_waves(sound_names,raw_sounds)
 plot_specgram(sound_names,raw_sounds)
 plot_log_power_specgram(sound_names,raw_sounds)

@@ -9,7 +9,7 @@ from matplotlib.pyplot import specgram
 plt.style.use('ggplot')
 
 H_SIZE = 10
-V_SIZE = 16
+V_SIZE = 22
 DDPI = 96
 
 plt.rcParams['font.size'] = 12
@@ -62,14 +62,16 @@ def plot_log_power_specgram(sound_names,raw_sounds):
     plt.suptitle('Figure 3: Log power spectrogram',x=0.5, y=0.915,fontsize=12)
     plt.show()
 
-sound_file_paths = ["57320-0-0-7.wav"]
-sound_names = ["air conditioner"]
+sound_file_paths = ["sapo1.wav", "sapo2.wav", "sapo3.wav", "sapo3.wav"]
+sound_names = ["Sapo-folha (Rhinella scitula) - Track 1", "Sapo-folha (Rhinella scitula) - Track 2", "Sapo-folha (Rhinella scitula) - Track 3", "Sapo-folha (Rhinella scitula) - Track 4"]
 
 raw_sounds = load_sound_files(sound_file_paths)
 
 plot_waves(sound_names,raw_sounds)
 plot_specgram(sound_names,raw_sounds)
 plot_log_power_specgram(sound_names,raw_sounds)
+
+'''
 
 print("Extracting features ...")
 
@@ -189,4 +191,4 @@ plt.show()
 
 p,r,f,s = precision_recall_fscore_support(y_true, y_pred, average='micro')
 print ("F-Score:", round(f,3))
-
+'''

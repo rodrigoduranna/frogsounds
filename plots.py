@@ -38,7 +38,7 @@ def plot_waves(sound_names,raw_sounds):
         librosa.display.waveplot(np.array(f),sr=22050)
         plt.title(n.title())
         i += 1
-    plt.suptitle('Figure 1: Waveplot',x=0.5, y=0.915,fontsize=12)
+    plt.suptitle('Figura 1: Waveform',x=0.5, y=0.915,fontsize=12)
     plt.show()
 #plota o grafico de espectograma    
 def plot_specgram(sound_names,raw_sounds):
@@ -49,7 +49,7 @@ def plot_specgram(sound_names,raw_sounds):
         specgram(np.array(f), Fs=22050)
         plt.title(n.title())
         i += 1
-    plt.suptitle('Figure 2: Spectrogram',x=0.5, y=0.915,fontsize=12)
+    plt.suptitle('Figura 2: Espectograma',x=0.5, y=0.915,fontsize=12)
     plt.show()
 #plota o grafico de power log espectograma
 def plot_log_power_specgram(sound_names,raw_sounds):
@@ -61,11 +61,11 @@ def plot_log_power_specgram(sound_names,raw_sounds):
         librosa.display.specshow(D,x_axis='time' ,y_axis='log')
         plt.title(n.title())
         i += 1
-    plt.suptitle('Figure 3: Log power spectrogram',x=0.5, y=0.915,fontsize=12)
+    plt.suptitle('Figur4 3: Espectograma Logaritmico',x=0.5, y=0.915,fontsize=12)
     plt.show()
 #arquivos de som a serem criados os graficos
-sound_file_paths = ["sapo1.wav"]
-sound_names = ["Sapo-folha (Rhinella scitula) - Track 1"]
+sound_file_paths = ["Perereca-grande (Hypsiboas raniceps).wav"]
+sound_names = ["Perereca-grande (Hypsiboas raniceps)"]
 #carrega os arquivos de som
 raw_sounds = load_sound_files(sound_file_paths)
 #plota os graficos

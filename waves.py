@@ -169,6 +169,8 @@ y_ = tf.nn.softmax(tf.matmul(h_2,W) + b)
 
 init = tf.global_variables_initializer()
 
+saver = tf.train.Saver()
+
 print("Calculando a funcao de custo ...")
 
 cost_function = tf.reduce_mean(-tf.reduce_sum(Y * tf.log(y_), reduction_indices=[1])) 
@@ -190,6 +192,8 @@ with tf.Session() as sess:
     
     y_pred = sess.run(tf.argmax(y_,1),feed_dict={X: test_x})
     y_true = sess.run(tf.argmax(test_y,1))
+    save_path = saver.save(sess, "model.ckpt")
+    print("Model saved in file: %s" % save_path)
 
 print(" Plotando a funcao de custo ...")
 fig = plt.figure(figsize=(10,8))

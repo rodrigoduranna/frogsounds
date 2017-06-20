@@ -41,16 +41,16 @@ def one_hot_encode(labels):
     n_labels = len(labels)
     n_unique_labels = len(np.unique(labels))
     one_hot_encode = np.zeros((n_labels,n_unique_labels))
-    one_hot_encode[np.arange(n_labels), labels] = 1
+    one_hot_encode[np.arange(n_labels), labels-1] = 1
     return one_hot_encode
 
 #pasta onde estão os arquivos a serem categorizados
-parent_dir = 'Sound-Data'
+parent_dir = 'FrogData'
 
 #sub_dirs = ['fold1','fold2','fold3']
 
 #sub diretorios a serem pesquisados
-sub_dirs = ['fold1', 'fold2']
+sub_dirs = ['frogs']
 
 print("Lendo arquivos de som ...")
 features, labels = parse_audio_files(parent_dir,sub_dirs)
@@ -122,7 +122,7 @@ with tf.Session() as sess:
     
     y_pred = sess.run(tf.argmax(y_,1),feed_dict={X: test_x})
     y_true = sess.run(tf.argmax(test_y,1))
-    save_path = saver.save(sess, "model.ckpt")
+    save_path = saver.save(sess, "model/graph.ckpt")
     print("Model saved in file: %s" % save_path)
 
 print(" Plotando a funcao de custo ...")
